@@ -1,5 +1,5 @@
 "use client";
-import { Download, Youtube } from "lucide-react";
+import { Download } from "lucide-react";
 import { useRef, useState } from "react";
 import axios from "axios";
 import { Footer } from "@/components/Footer";
@@ -26,7 +26,7 @@ export default function YTDownloaderLanding() {
       return;
     }
 
-    const response = await axios.post('https://yt-downloader-six-sigma.vercel.app/api/v1', {
+    await axios.post(backendUrl, {
       url: url,
     });
 
