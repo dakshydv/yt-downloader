@@ -5,20 +5,7 @@ import os from "os";
 import path from "path";
 
 const url: string = process.env.NEXT_PUBLIC_ALLOWED_ORIGIN || "";
-
 const ALLOWED_ORIGIN = url || "*";
-
-export async function OPTIONS() {
-  return new Response(null, {
-    status: 200,
-    headers: {
-      "Access-Control-Allow-Origin": ALLOWED_ORIGIN,
-      "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type, Authorization",
-      "Access-Control-Allow-Credentials": "true",
-    },
-  });
-}
 
 export async function POST(req: NextRequest) {
   const body = await req.json();
@@ -42,7 +29,12 @@ export async function POST(req: NextRequest) {
         message: "video downloaded",
       },
       {
-        headers: { "Access-Control-Allow-Origin": ALLOWED_ORIGIN },
+        headers: {
+          "Access-Control-Allow-Origin": ALLOWED_ORIGIN,
+          "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          "Access-Control-Allow-Credentials": "true"
+        },
       }
     );
   } catch (error) {

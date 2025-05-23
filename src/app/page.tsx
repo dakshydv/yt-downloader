@@ -13,20 +13,20 @@ export default function YTDownloaderLanding() {
   const linkRef = useRef<HTMLInputElement>(null);
 
   const handleDownload = async () => {
-    if (!url.trim()) {
-      setError("Please enter a YouTube URL");
-      setTimeout(() => setError(""), 3000);
-      return;
-    }
+    // if (!url.trim()) {
+    //   setError("Please enter a YouTube URL");
+    //   setTimeout(() => setError(""), 3000);
+    //   return;
+    // }
 
-    const youtubeRegex = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/.+$/;
-    if (!youtubeRegex.test(url)) {
-      setError("Please enter a valid YouTube URL");
-      setTimeout(() => setError(""), 3000);
-      return;
-    }
+    // const youtubeRegex = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/.+$/;
+    // if (!youtubeRegex.test(url)) {
+    //   setError("Please enter a valid YouTube URL");
+    //   setTimeout(() => setError(""), 3000);
+    //   return;
+    // }
 
-    await axios.post(backendUrl, {
+    await axios.post('http://localhost:3001/api/v1', {
       url: url,
     });
 
