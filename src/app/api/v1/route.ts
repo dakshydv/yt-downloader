@@ -4,7 +4,7 @@ import ytdl from "@distube/ytdl-core";
 import os from "os";
 import path from "path";
 
-const url: string = process.env.NEXT_PUBLIC_DOWNLOAD_URL || "";
+const url: string = process.env.NEXT_PUBLIC_ALLOWED_ORIGIN || "";
 
 const ALLOWED_ORIGIN = url || "*";
 
