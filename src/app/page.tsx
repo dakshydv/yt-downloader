@@ -25,15 +25,36 @@ export default function YTDownloaderLanding() {
       return;
     }
 
-    await axios.post('/api/v1', {
-      url: url,
-    });
-
     setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
+    try {
+      const response = await axios.post<Blob>(
+        "/api/v1",
+        {
+          url: url,
+        },
+        {
+          responseType: "blob",
+        }
+      );
+
+      // Create a download link
+      const blob = new Blob([response.data], { type: "video/mp4" });
+      const downloadUrl = window.URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = downloadUrl;
+      link.download = "video.mp4"; // The actual filename will be set by the server
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(downloadUrl);
+
       setUrl("");
-    }, 2000);
+    } catch (error) {
+      setError("Failed to download video. Please try again.");
+      setTimeout(() => setError(""), 3000);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
