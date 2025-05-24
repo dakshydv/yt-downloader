@@ -51,6 +51,7 @@ export default function YTDownloaderLanding() {
       setUrl("");
     } catch (error) {
       setError("Failed to download video. Please try again.");
+      console.log(error);
       setTimeout(() => setError(""), 3000);
     } finally {
       setIsLoading(false);
