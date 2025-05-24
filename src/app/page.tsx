@@ -6,7 +6,6 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 
 export default function YTDownloaderLanding() {
-  const backendUrl: string = process.env.NEXT_PUBLIC_DOWNLOAD_URL || "";
   const [url, setUrl] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
@@ -26,7 +25,7 @@ export default function YTDownloaderLanding() {
       return;
     }
 
-    await axios.post(backendUrl, {
+    await axios.post('/api/v1', {
       url: url,
     });
 
