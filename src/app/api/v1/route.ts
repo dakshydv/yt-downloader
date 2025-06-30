@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import ytdl from "@distube/ytdl-core";
 
 const url: string = process.env.NEXT_PUBLIC_ALLOWED_ORIGIN || "";
-const ALLOWED_ORIGIN = url || "*";
+// const ALLOWED_ORIGIN = url || "*";
 
 export async function POST(req: NextRequest) {
   // try {
