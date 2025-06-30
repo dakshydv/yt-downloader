@@ -27,9 +27,11 @@ export default function YTDownloaderLanding() {
 
     setIsLoading(true);
     try {
-      const response = await axios.post("/api/v1", {
+      setIsLoading(true)
+       await axios.post("/api/v1", {
         url
       })
+      setIsLoading(false)
       // const response = await axios.post<Blob>(
       //   "/api/v1",
       //   {
