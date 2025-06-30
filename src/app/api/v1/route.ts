@@ -37,7 +37,7 @@ export async function POST(req: NextRequest) {
   } catch (error) {
     console.error("Download error:", error);
     return NextResponse.json(
-      { error: "Failed to download video" },
+      { error},
       { status: 500 }
     );
   }

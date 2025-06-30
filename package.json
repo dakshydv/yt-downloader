@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@distube/ytdl-core": "^4.16.10",
+    "@distube/ytdl-core": "^4.16.12",
     "@types/axios": "^0.9.36",
     "axios": "^1.9.0",
     "lucide-react": "^0.511.0",
