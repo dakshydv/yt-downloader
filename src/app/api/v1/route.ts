@@ -9,6 +9,10 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const info = await ytdl.getBasicInfo(body.url);
     const title = info.videoDetails.title;
+    console.log(`url is ${url}`);
+    console.log(info);
+    console.log(`title is ${title}`);
+    
 
     // Get the video stream
     const stream = ytdl(body.url, {
@@ -18,11 +22,14 @@ export async function POST(req: NextRequest) {
 
     // Convert stream to buffer
     const chunks: Uint8Array[] = [];
+    console.log(chunks);          // delete later
+    
     for await (const chunk of stream) {
       chunks.push(chunk);
     }
     const buffer = Buffer.concat(chunks);
 
+    console.log("reached till response");
     // Return the video data as a downloadable file
     return new NextResponse(buffer, {
       headers: {
